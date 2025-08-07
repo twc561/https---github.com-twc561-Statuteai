@@ -25,6 +25,8 @@ void main() async {
     ),
  );
 }
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -207,3 +209,4 @@ class RecentsScreen extends StatelessWidget {
     return const Center(child: Text('Recents Screen - Coming Soon!'));
   }
 
+}
