@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
+import 'debug_example.dart';
 
 void main() {
+  developer.log('App starting...', name: 'myapp.main');
   runApp(const MyApp());
 }
 
@@ -57,6 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    developer.log('Increment button pressed', name: 'myapp.counter');
+    developer.log('Current counter value: $_counter', name: 'myapp.counter');
+    
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -65,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+    
+    developer.log('New counter value: $_counter', name: 'myapp.counter');
   }
 
   @override
@@ -75,6 +83,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    developer.log('Building UI with counter: $_counter', name: 'myapp.ui');
+    
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -108,6 +118,17 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                developer.log('Navigating to debug example', name: 'myapp.navigation');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DebugExample()),
+                );
+              },
+              child: const Text('Open Debug Example'),
             ),
           ],
         ),
